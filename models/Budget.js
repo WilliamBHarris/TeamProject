@@ -10,11 +10,11 @@ const BudgetModel = db.define("budget", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  from: {
+  fromDate: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  to: {
+  toDate: {
     type: DataTypes.DATE,
     allowNull: false,
   },

@@ -4,14 +4,14 @@ let validateJWT = require("../middleware/validate-jwt");
 const { BudgetModel } = require("../models");
 
 router.post("/", validateJWT, async (req, res) => {
-    const { title, description, from, to } =
+    const { title, description, fromDate, toDate } =
       req.body.budget;
     const { id } = req.user;
     const budgetEntry = {
       title,
       description,
-      from,
-      to,
+      fromDate,
+      toDate,
       owner_id: id,
     };
     try {
