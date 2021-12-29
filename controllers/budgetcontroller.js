@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-let validateJWT = require("../middleware/validate-jwt");
+let validateJWT = require("../middleware/validateJWT");
 const { BudgetModel } = require("../models");
 
 router.post("/", validateJWT, async (req, res) => {
+
   const { title, description, from, to } =
     req.body.budget;
   const { id } = req.user;
