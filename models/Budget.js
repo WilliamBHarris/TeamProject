@@ -1,38 +1,28 @@
-import react from 'react';
-import {useEffect} from 'react';
+const { DataTypes } = require("sequelize");
+const db = require("../db");
 
+const BudgetModel = db.define("budget", {
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  from: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  to: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  owner_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
 
-
-/* Get all user appointments by id*/
-//we will need this sooner or later so built it
-const getUserAppointments = () => {
-    fetch('http://localhost:3000/appointments', {
-        method: 'GET',
-        headers: new Headers ({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token'),
-        }),
-    }).then(res => res.json())
-    .then(appointments => {
-        console.log(appointments);
-        this.setState({
-            appointments: appointments
-        })
-    })
-}
-/* Appointment Delete */
-const cancelAppointment = (appointment) => {
-    console.log("Appointment cancelled");
-    fetch (`http://localhost:3000/appointments/cancel/{appointment.id`, { 
-        method: 'DELETE',
-        headers: new Headers ({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token'),
-        }),
-    }).then(() => getUserAppointments());
-    
-}
-
-useEffect(async () => {
-
-})
+module.exports = BudgetModel;
+>>>>>>> bffc1d2ae64780e0a827323874230d9dcb20c7b3
