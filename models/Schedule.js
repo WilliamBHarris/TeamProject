@@ -20,7 +20,6 @@ const ScheduleModel = db.define("schedule", {
   },
   owner_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
   },
 });
 

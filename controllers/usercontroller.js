@@ -1,13 +1,13 @@
-const express = require('express');
 const router = require('express').Router();
 const { UniqueConstraintError } = require('sequelize/lib/errors');
 const { UserModel } = require('../models');
 // const { validatejwt } = require('../middleware');
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-
+ 
 router.post("/register", async (req, res) => {
-    let { email, password } = req.body.user;
+    console.log(req.body)
+    const { email, password } = req.body.user;
     try {
         const User = await UserModel.create({
             email,

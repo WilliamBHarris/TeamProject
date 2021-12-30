@@ -34,12 +34,12 @@ router.put("/update/:id", validateJWT, async (req, res) => {
       owner: id
     }
   }
-  console.log(this.put);
+  console.log(req.body.schedule);
   const rescheduledApt = {
     title: title,
     description: description,
     from: from,
-    to: to,
+    to: to
   }
 
   try {
