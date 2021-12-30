@@ -1,4 +1,4 @@
-const BudgetModel = require("./budget");
+const ScheduleModel = require("./Schedule");
 const UserModel = require("./user");
 
-module.exports = { BudgetModel, UserModel };
+module.exports = { ScheduleModel, UserModel };

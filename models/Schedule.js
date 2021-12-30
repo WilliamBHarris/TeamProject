@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const BudgetModel = db.define("budget", {
+const ScheduleModel = db.define("schedule", {
   title: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -24,4 +24,4 @@ const BudgetModel = db.define("budget", {
   },
 });
 
-module.exports = BudgetModel;
+module.exports = ScheduleModel;

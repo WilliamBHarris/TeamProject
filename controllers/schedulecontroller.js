@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-let validateJWT = require("../middleware/validateJWT");
-const { BudgetModel } = require("../models");
+let validateJWT = require("../middleware/validate-JWT");
+const { ScheduleModel } = require("../models");
 
 router.post("/", validateJWT, async (req, res) => {
 
   const { title, description, from, to } =
-    req.body.budget;
+    req.body.schedule;
   const { id } = req.user;
-  const budgetEntry = {
+  const scheduleEntry = {
     title,
     description,
     from,
@@ -16,22 +16,22 @@ router.post("/", validateJWT, async (req, res) => {
     owner_id: id,
   };
   try {
-    const newBudget = await BudgetModel.create(budgetEntry);
-    res.status(200).json(newBudget);
+    const newSchedule = await ScheduleModel.create(scheduleEntry);
+    res.status(200).json(newSchedule);
   } catch (err) {
     res.status(500).json({ error: err });
   }
 });
 
-router.put("/edit/:id", validateJWT, async (req, res) => {
-  const { title, description, from, to } = req.body.budget
-  const owner_id = req.params.owner_id;
+router.put("/update/:id", validateJWT, async (req, res) => {
+  const { title, description, from, to } = req.body.schedule
+  const owner_id = req.params.id;
   const { id } = req.user;
 
   const query = {
     where: {
       id: owner_id,
-      owner_id: id
+      owner: id
     }
   }
   console.log(this.put);
@@ -43,7 +43,7 @@ router.put("/edit/:id", validateJWT, async (req, res) => {
   }
 
   try {
-    const update = await BudgetModel.update(rescheduledApt, query);
+    const update = await ScheduleModel.update(rescheduledApt, query);
     res.status(200).json(update);
   } catch (err) {
     res.status(500).json({ error: err });
