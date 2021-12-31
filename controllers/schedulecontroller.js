@@ -51,4 +51,32 @@ router.put("/update/:id", validateJWT, async (req, res) => {
   }
 })
 
+  const getUserAppointments = () => {
+    fetch('http://localhost:3000/appointments', {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+      }),
+    }).then(res => res.json())
+      .then(appointments => {
+        console.log(appointments);
+        this.setState({
+          appointments: appointments
+        })
+      })
+  }
+  /* Appointment Delete */
+  const cancelAppointment = (appointment) => {
+    console.log("Appointment cancelled");
+    fetch(`http://localhost:3000/appointments/cancel/{appointment.id`, {
+      method: 'DELETE',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token'),
+      }),
+    }).then(() => getUserAppointments());
+  
+  }
+
 module.exports = router;
