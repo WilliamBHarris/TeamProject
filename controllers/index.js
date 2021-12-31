@@ -1,4 +1,4 @@
 module.exports = {
-    userController: require("./userController"),
-    budgetController: require("./budgetController"),
+    userController: require("./usercontroller"),
+    scheduleController: require("./schedulecontroller"),
 };
