@@ -25,4 +25,4 @@ const BudgetModel = db.define("budget", {
 });
 
 module.exports = BudgetModel;
->>>>>>> bffc1d2ae64780e0a827323874230d9dcb20c7b3
+
